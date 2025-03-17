@@ -14,7 +14,7 @@ public static class DeflateBlockCompressor
     public static IObservable<DeflateBlock> Blocks(IObservable<byte> input, Maybe<Deflater> maybeDeflater,
         int uncompressedBlockSize = 64 * 1024)
     {
-        var deflater = maybeDeflater.GetValueOrDefault(new Deflater());
+        var deflater = maybeDeflater.GetValueOrDefault(new Deflater(8, true));
         return Observable.Create<DeflateBlock>(observer => 
         {
             var buffer = new List<byte>();
@@ -56,16 +56,13 @@ public static class DeflateBlockCompressor
     {
         var input = uncompressedBlock.ToArray();
         deflater.SetInput(input);
-    
-        // Use a MemoryStream instead of recursion to collect bytes
+
         using var compressedStream = new MemoryStream();
         byte[] buffer = new byte[4096];
-    
+
         if (isLastBlock)
         {
             deflater.Finish();
-        
-            // Extract all bytes until finished
             int bytesCompressed;
             while (!deflater.IsFinished && (bytesCompressed = deflater.Deflate(buffer)) > 0)
             {
@@ -74,18 +71,14 @@ public static class DeflateBlockCompressor
         }
         else
         {
-            // For intermediate blocks, we need to ensure the deflater
-            // has fully processed the input data
             deflater.Flush();
-        
-            // Extract all available bytes after flushing
             int bytesCompressed;
             while (!deflater.IsNeedingInput && (bytesCompressed = deflater.Deflate(buffer)) > 0)
             {
                 compressedStream.Write(buffer, 0, bytesCompressed);
             }
         }
-    
+
         return new DeflateBlock
         {
             CompressedData = compressedStream.ToArray(),
