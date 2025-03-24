@@ -10,12 +10,13 @@ public class MsixCompressionTest
     [Fact]
     public async Task Test()
     {
-        await using var file = File.OpenRead("HelloWorld.dat");
+        var path = @"HelloWorld.dat";
+        await using var file = File.OpenRead(path);
 
-        var blocks = await Compressed.Blocks(file.ToObservable().Flatten()).ToList();
+        var blocks = await Compressed.Blocks(file.ToObservable()).ToList();
         var compressedBytes = blocks.Select(x => x.CompressedData).Flatten().ToArray();
 
         var originalBytes = DeflateHelper.DecompressDeflateData(compressedBytes);
-        Assert.True((await File.ReadAllBytesAsync("HelloWorld.dat")).SequenceEqual(originalBytes));
+        Assert.True((await File.ReadAllBytesAsync(path)).SequenceEqual(originalBytes));
     }
 }
