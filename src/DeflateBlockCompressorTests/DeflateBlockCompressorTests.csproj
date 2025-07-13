@@ -7,6 +7,7 @@
 		<LangVersion>latest</LangVersion>
 		<IsPackable>false</IsPackable>
 		<IsTestProject>true</IsTestProject>
+		<RootNamespace>BlockCompressorTests</RootNamespace>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -25,7 +26,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\BlockCompressor\BlockCompressor.csproj" />
+	  <ProjectReference Include="..\DeflateBlockCompressor\DeflateBlockCompressor.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
