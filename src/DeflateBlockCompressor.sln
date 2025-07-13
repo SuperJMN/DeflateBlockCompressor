@@ -7,12 +7,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeflateBlockCompressorTests
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeflateBlockCompressor", "DeflateBlockCompressor\DeflateBlockCompressor.csproj", "{E91B6ACF-6824-4F23-B042-06A5664C3437}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_build", "..\build\_build.csproj", "{58FB3B5F-BDBF-4F82-B5EC-AD514BCB7A3A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{58FB3B5F-BDBF-4F82-B5EC-AD514BCB7A3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58FB3B5F-BDBF-4F82-B5EC-AD514BCB7A3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1A2F411E-F4EB-45A4-830C-89139D78A492}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1A2F411E-F4EB-45A4-830C-89139D78A492}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A2F411E-F4EB-45A4-830C-89139D78A492}.Release|Any CPU.ActiveCfg = Release|Any CPU
