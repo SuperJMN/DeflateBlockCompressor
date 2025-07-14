@@ -6,17 +6,18 @@
     <RootNamespace></RootNamespace>
     <NoWarn>CS0649;CS0169;CA1050;CA1822;CA2211;IDE1006</NoWarn>
     <NukeRootDirectory>..</NukeRootDirectory>
-    <NukeScriptDirectory>..\src</NukeScriptDirectory>
+    <NukeScriptDirectory>..</NukeScriptDirectory>
     <NukeTelemetryVersion>1</NukeTelemetryVersion>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="DotnetPackaging.Deployment" Version="3.0.3" />
     <PackageReference Include="Nuke.Common" Version="9.0.4" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageDownload Include="gitversion.tool" Version="[6.3.0]" />
+    <PackageDownload Include="GitVersion.Tool" Version="[6.3.0]" />
   </ItemGroup>
 
 </Project>

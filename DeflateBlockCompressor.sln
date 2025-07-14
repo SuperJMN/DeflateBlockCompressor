@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.13.35828.75
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeflateBlockCompressorTests", "DeflateBlockCompressorTests\DeflateBlockCompressorTests.csproj", "{1A2F411E-F4EB-45A4-830C-89139D78A492}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeflateBlockCompressorTests", "src\DeflateBlockCompressorTests\DeflateBlockCompressorTests.csproj", "{1A2F411E-F4EB-45A4-830C-89139D78A492}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeflateBlockCompressor", "DeflateBlockCompressor\DeflateBlockCompressor.csproj", "{E91B6ACF-6824-4F23-B042-06A5664C3437}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeflateBlockCompressor", "src\DeflateBlockCompressor\DeflateBlockCompressor.csproj", "{E91B6ACF-6824-4F23-B042-06A5664C3437}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_build", "..\build\_build.csproj", "{58FB3B5F-BDBF-4F82-B5EC-AD514BCB7A3A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_build", "build\_build.csproj", "{B9BD0C18-C288-4522-96F1-BACAD55911D6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,8 +15,8 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{58FB3B5F-BDBF-4F82-B5EC-AD514BCB7A3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{58FB3B5F-BDBF-4F82-B5EC-AD514BCB7A3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9BD0C18-C288-4522-96F1-BACAD55911D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9BD0C18-C288-4522-96F1-BACAD55911D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1A2F411E-F4EB-45A4-830C-89139D78A492}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1A2F411E-F4EB-45A4-830C-89139D78A492}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A2F411E-F4EB-45A4-830C-89139D78A492}.Release|Any CPU.ActiveCfg = Release|Any CPU

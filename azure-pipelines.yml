@@ -24,57 +24,9 @@ stages:
     pool:
       vmImage: 'ubuntu-latest'
     jobs:
-      - job: Clean
-        displayName: 'Clean'
-        dependsOn: [  ]
-        steps:
-          - checkout: self
-            fetchDepth: 0
-          - task: Cache@2
-            displayName: 'Cache: nuke-temp'
-            inputs:
-              key: $(Agent.OS) | nuke-temp | **/global.json, **/*.csproj, **/Directory.Packages.props
-              restoreKeys: $(Agent.OS) | nuke-temp
-              path: .nuke/temp
-          - task: Cache@2
-            displayName: 'Cache: nuget-packages'
-            inputs:
-              key: $(Agent.OS) | nuget-packages | **/global.json, **/*.csproj, **/Directory.Packages.props
-              restoreKeys: $(Agent.OS) | nuget-packages
-              path: $(HOME)/.nuget/packages
-          - task: CmdLine@2
-            displayName: 'Run: Clean'
-            inputs:
-              script: './src/build.cmd Clean --skip'
-            env:
-              NuGetApiKey: $(NuGetApiKey)
-      - job: Pack
-        displayName: 'Pack'
-        dependsOn: [ Clean ]
-        steps:
-          - checkout: self
-            fetchDepth: 0
-          - task: Cache@2
-            displayName: 'Cache: nuke-temp'
-            inputs:
-              key: $(Agent.OS) | nuke-temp | **/global.json, **/*.csproj, **/Directory.Packages.props
-              restoreKeys: $(Agent.OS) | nuke-temp
-              path: .nuke/temp
-          - task: Cache@2
-            displayName: 'Cache: nuget-packages'
-            inputs:
-              key: $(Agent.OS) | nuget-packages | **/global.json, **/*.csproj, **/Directory.Packages.props
-              restoreKeys: $(Agent.OS) | nuget-packages
-              path: $(HOME)/.nuget/packages
-          - task: CmdLine@2
-            displayName: 'Run: Pack'
-            inputs:
-              script: './src/build.cmd Pack --skip'
-            env:
-              NuGetApiKey: $(NuGetApiKey)
       - job: Publish
         displayName: 'Publish'
-        dependsOn: [ Pack ]
+        dependsOn: [  ]
         steps:
           - checkout: self
             fetchDepth: 0
@@ -93,6 +45,6 @@ stages:
           - task: CmdLine@2
             displayName: 'Run: Publish'
             inputs:
-              script: './src/build.cmd Publish --skip'
+              script: './build.cmd Publish --skip'
             env:
               NuGetApiKey: $(NuGetApiKey)

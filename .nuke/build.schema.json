@@ -24,11 +24,7 @@
     "ExecutableTarget": {
       "type": "string",
       "enum": [
-        "Clean",
-        "Pack",
-        "Publish",
-        "PublishArtifacts",
-        "PublishOnly"
+        "Publish"
       ]
     },
     "Verbosity": {
@@ -110,13 +106,17 @@
             "Release"
           ]
         },
+        "Force": {
+          "type": "boolean",
+          "description": "Force publish even if not a server build"
+        },
         "NuGetApiKey": {
           "type": "string",
           "default": "Secrets must be entered via 'nuke :secrets [profile]'"
         },
-        "NuGetSource": {
+        "Solution": {
           "type": "string",
-          "description": "NuGet Source URL for publishing packages"
+          "description": "Path to a solution file that is automatically loaded"
         }
       }
     },
