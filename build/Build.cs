@@ -31,11 +31,11 @@ class Build : NukeBuild
     
     Target Publish => d => d
         .Requires(() => NuGetApiKey)
-        .OnlyWhenStatic(() => IsServerBuild || Force)
-        .Executes(() =>
+        .OnlyWhenStatic(() => Repository.IsOnMainOrMasterBranch() || Force)
+        .Executes(async () =>
         {
             var project = Solution.GetProject("DeflateBlockCompressor").AsMaybe().ToResult("Project 'DeflateBlockCompressor' not found in the solution.");
-            return project.Map(p => Deployer.Instance.PublishNugetPackages([p.Path.ToString()], GitVersion.MajorMinorPatch, NuGetApiKey))
+            await project.Map(p => Deployer.Instance.PublishNugetPackages([p.Path.ToString()], GitVersion.MajorMinorPatch, NuGetApiKey))
                 .Tap(() => Log.Information("NuGet packages published successfully."))
                 .TapError(err => Assert.Fail(err));
         });
